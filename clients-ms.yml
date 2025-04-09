@@ -28,3 +28,6 @@ jwt:
     converter:
       resource-id: artis-rest-api
       principle-attribute: preferred_username
+
+server:
+  port: 8081
