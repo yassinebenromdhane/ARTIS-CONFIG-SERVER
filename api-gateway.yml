@@ -14,21 +14,21 @@ spring:
 
       routes:
         - id: clients_ms_clients
-          uri: lb://CLIENT-MS
+          uri: lb://clients-ms
           predicates:
             - Path=/clients/**
           filters:
             - RewritePath=/clients/(?<path>.*), /api/clients/${path}
 
         - id: clients_ms_groupes
-          uri: lb://CLIENT-MS
+          uri: lb://clients-ms
           predicates:
             - Path=/groupes-clients/**
           filters:
             - RewritePath=/groupes-clients/(?<path>.*), /api/groupes-clients/${path}
 
         - id: articles_ms
-          uri: lb://ARTICLE-MS
+          uri: lb://article-ms
           predicates:
             - Path=/articles/**
           filters:
