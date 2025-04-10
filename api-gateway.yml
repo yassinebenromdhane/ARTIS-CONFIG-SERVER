@@ -2,32 +2,39 @@ server:
   port: 8899
 
 spring:
+  application:
+    name: api-gateway
+
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
       routes:
         - id: clients_ms_clients
-          uri: http://localhost:8081
+          uri: lb://CLIENT-MS
           predicates:
             - Path=/clients/**
           filters:
-            - RewritePath=/clients/(?<path>.*), /api/clients/$\{path}
+            - RewritePath=/clients/(?<path>.*), /api/clients/${path}
 
         - id: clients_ms_groupes
-          uri: http://localhost:8081
+          uri: lb://CLIENT-MS
           predicates:
             - Path=/groupes-clients/**
           filters:
-            - RewritePath=/groupes-clients/(?<path>.*), /api/groupes-clients/$\{path}
+            - RewritePath=/groupes-clients/(?<path>.*), /api/groupes-clients/${path}
 
         - id: articles_ms
-          uri: http://localhost:8091
+          uri: lb://ARTICLE-MS
           predicates:
             - Path=/articles/**
           filters:
-            - RewritePath=/articles/(?<path>.*), /api/articles/$\{path}
+            - RewritePath=/articles/(?<path>.*), /api/articles/${path}
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://192.168.0.116:8180/realms/artis
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
