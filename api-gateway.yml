@@ -33,6 +33,11 @@ spring:
             - Path=/articles/**
           filters:
             - RewritePath=/articles/(?<path>.*), /api/articles/${path}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://192.168.0.116:8180/realms/artis
 
 eureka:
   client:
