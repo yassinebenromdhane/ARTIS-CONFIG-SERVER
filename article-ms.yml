@@ -1,7 +1,9 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/article-ms
+      uri: mongodb://192.168.0.123:27017/article-ms?authSource=admin
+      username: admin
+      password: admin123
   main:
     allow-bean-definition-overriding: true
   security:
@@ -23,4 +25,4 @@ jwt:
       resource-id: artis-rest-api
       principle-attribute: preferred_username
 server:
-  port: 8091
+  port: 8095
