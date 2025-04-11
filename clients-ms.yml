@@ -1,4 +1,7 @@
 spring:
+  mvc:
+    servlet:
+      path: /client 
   datasource:
     url: jdbc:postgresql://localhost:5432/clients_ms
     username: postgres
