@@ -16,10 +16,8 @@ spring:
         - id: clients_ms_clients
           uri: lb://clients-ms
           predicates:
-            - Path=/clients/**
-          filters:
-            - RewritePath=/clients/(?<path>.*), /api/clients/${path}
-
+            - Path=/client/**
+          
         - id: clients_ms_groupes
           uri: lb://clients-ms
           predicates:
