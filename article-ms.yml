@@ -1,9 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://192.168.0.123:27017/article-ms?authSource=admin
-      username: admin
-      password: admin123
+      uri: mongodb://admin:admin123@192.168.0.123:27017/article-ms?authSource=admin
   main:
     allow-bean-definition-overriding: true
   security:
