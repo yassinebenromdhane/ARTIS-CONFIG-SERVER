@@ -17,20 +17,12 @@ spring:
           uri: lb://clients-ms
           predicates:
             - Path=/client/**
-          
-        - id: clients_ms_groupes
-          uri: lb://clients-ms
-          predicates:
-            - Path=/groupes-clients/**
-          filters:
-            - RewritePath=/groupes-clients/(?<path>.*), /api/groupes-clients/${path}
 
         - id: articles_ms
           uri: lb://article-ms
           predicates:
             - Path=/articles/**
-          filters:
-            - RewritePath=/articles/(?<path>.*), /api/articles/${path}
+
   security:
     oauth2:
       resourceserver:
