@@ -23,6 +23,12 @@ spring:
           predicates:
             - Path=/articles/**
 
+        - id: stock_ms
+          uri: lb://stock-ms
+          predicates:
+            - Path=/stocks/**
+
+
   security:
     oauth2:
       resourceserver:
