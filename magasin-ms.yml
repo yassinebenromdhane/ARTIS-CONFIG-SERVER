@@ -22,3 +22,8 @@ spring:
       authorizationserver:
         endpoint:
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jw
+jwt:
+  auth:
+    converter:
+      resource-id: artis-rest-api
+      principle-attribute: preferred_username
