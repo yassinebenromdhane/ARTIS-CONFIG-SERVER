@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://admin:admin123@192.168.0.123:27017/article-ms?authSource=admin
+      uri: mongodb://localhost:27017/article-ms
   main:
     allow-bean-definition-overriding: true
   security:
