@@ -1,22 +1,22 @@
 spring:
   mvc:
     servlet:
-      path: /magasin
-
+      path: /client 
   datasource:
-    url: jdbc:postgresql://192.168.0.123:6588/magasin_ms
+    url: jdbc:postgresql://192.168.0.123:6588/client_ms
     username: postgres
     password: postgres
 
   jpa:
-    hibernate:
-      ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
         jdbc:
           lob:
             non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
   security:
     oauth2:
       resourceserver:
@@ -31,6 +31,7 @@ jwt:
     converter:
       resource-id: artis-rest-api
       principle-attribute: preferred_username
+
       
 server:
-  port: 8093
+  port: 8092

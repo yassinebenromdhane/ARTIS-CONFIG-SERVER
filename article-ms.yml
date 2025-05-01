@@ -1,7 +1,10 @@
 spring:
+  mvc:
+    servlet:
+      path: /article
   data:
     mongodb:
-      uri: mongodb://localhost:27017/article-ms
+      uri: mongodb://admin:admin123@192.168.0.123:27017/article-ms?authSource=admin
   main:
     allow-bean-definition-overriding: true
   security:
@@ -12,10 +15,6 @@ spring:
       authorizationserver:
         endpoint:
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
           
 jwt:
   auth:
@@ -23,4 +22,4 @@ jwt:
       resource-id: artis-rest-api
       principle-attribute: preferred_username
 server:
-  port: 8095
+  port: 8091

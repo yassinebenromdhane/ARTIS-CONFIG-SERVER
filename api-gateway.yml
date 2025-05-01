@@ -13,20 +13,35 @@ spring:
           lower-case-service-id: true
 
       routes:
-        - id: clients_ms_clients
-          uri: lb://clients-ms
+        - id: client_ms
+          uri: lb://client-ms
           predicates:
             - Path=/client/**
 
-        - id: articles_ms
+        - id: article_ms
           uri: lb://article-ms
           predicates:
-            - Path=/articles/**
+            - Path=/article/**
+        
+        - id: magasin_ms
+          uri: lb://magasin-ms
+          predicates:
+            - Path=/magasin/**
 
         - id: stock_ms
           uri: lb://stock-ms
           predicates:
-            - Path=/stocks/**
+            - Path=/stock/**
+
+        - id: vente_ms
+          uri: lb://vente-ms
+          predicates:
+            - Path=/vente/**
+        
+        - id: livraison_ms
+          uri: lb://livraison-ms
+          predicates:
+            - Path=/livraison/**
 
 
   security:
@@ -39,3 +54,14 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: Vente Microservice
+        url: http://locahost:8899/vente/vente-ms/v3/api-docs
+      - name: Livraison Microservice
+        url: /livraison/v3/api-docs
+  api-docs:
+    enabled: false

@@ -1,9 +1,10 @@
 spring:
   mvc:
     servlet:
-      path: /client 
+      path: /livraison-ms
+      
   datasource:
-    url: jdbc:postgresql://localhost:5432/clients_ms
+    url: jdbc:postgresql://192.168.0.123:6588/livraison_ms
     username: postgres
     password: postgres
 
@@ -26,11 +27,23 @@ spring:
         endpoint:
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
 
+  rabbitmq:
+    host: 192.168.0.124
+    port: 30672
+    username: admin
+    password: admin123
+
 jwt:
   auth:
     converter:
       resource-id: artis-rest-api
       principle-attribute: preferred_username
-
+      
 server:
-  port: 8081
+  port: 8096
+
+livraison:
+  rabbitmq:
+    exchange: livraison-stock-exchange
+    routing-key: livraison.stock.update
+    queue: livraison-stock-queue

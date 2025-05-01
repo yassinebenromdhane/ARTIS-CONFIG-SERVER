@@ -4,7 +4,7 @@ spring:
       path: /stock
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/stock-ms
+    url: jdbc:postgresql://192.168.0.123:6588/stock_ms
     username: postgres
     password: postgres
 
@@ -25,16 +25,21 @@ spring:
       authorizationserver:
         endpoint:
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
-# eureka:
-#   client:
-#     service-url:
-#       defaultZone: http://localhost:8761/eureka
+  rabbitmq:
+    host: 192.168.0.124
+    port: 30672
+    username: admin
+    password: admin123
 
 jwt:
   auth:
     converter:
       resource-id: artis-rest-api
       principle-attribute: preferred_username
-
+      
 server:
   port: 8094
+
+stock:
+  rabbitmq:
+    queue: livraison-stock-queue
